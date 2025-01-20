@@ -1759,7 +1759,7 @@ def on_engine_request(
                 try:
                     result = action_func(*args, **kwargs)
                     break  # success, no exception, break out of the loop
-                except Exception:
+                except Exception as e:
                     if attempt < attempts:
                         print(
                             'JOB %r FAILED (attempt %d of %d)!'
@@ -1771,7 +1771,7 @@ def on_engine_request(
                                 retry_delay
                             )
                         )
-                        time.sleep(retry_delay)
+                        # time.sleep(retry_delay)
                     else:
                         raise
             exec_status = 'completed'

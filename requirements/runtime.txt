@@ -23,7 +23,7 @@ Flask-Minify==0.39
 Flask-OAuthlib==0.9.6
 Flask-Paranoid==0.3.0
 flask-restx==1.1.0
-# Flask-SQLAlchemy==2.5.0
+Flask-SQLAlchemy==2.5.0
 flask-swagger==0.2.14
 gdm==0.2.1
 geopandas==0.10.2

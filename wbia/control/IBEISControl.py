@@ -107,6 +107,7 @@ AUTOLOAD_PLUGIN_MODNAMES = [
     'wbia.algo.smk.vocab_indexer',
     'wbia.algo.smk.smk_pipeline',
     (('--no-cnn', '--nocnn'), 'wbia_cnn._plugin'),
+    (('--no-miew-id', '--nomiew-id'), 'wbia_miew_id._plugin'),
 ]
 
 
@@ -218,7 +219,7 @@ for modname in ut.ProgIter(
         # ut.import_modname(modname)
         # NOTE hack
         if modname == 'wbia_miew_id._plugin':
-            ub.import_module_from_path('/wbia/wbia-plugin-miew-id/wbia_miew_id/__init__.py')
+            ub.import_module_from_path('/home/sufwan/Desktop/wildbook-ia/wbia-plugin-miew-id/wbia_miew_id/__init__.py')
         if modname == 'wbia_whaleridgefindr._plugin':
             ub.import_module_from_path('/wbia/wbia-plugin-whaleridgefindr/wbia_whaleridgefindr/__init__.py')
         else:
@@ -227,7 +228,8 @@ for modname in ut.ProgIter(
         if 'wbia_cnn' in modname:
             import warnings
 
-            warnings.warn('Unable to load plugin: {!r}'.format(modname))
+            warnings.warn('''Unable to load plugin: {!r}'''.format(modname))
+            print("Unable to load plugin",modname)
         else:
             raise
 
