@@ -332,6 +332,20 @@ def get_job_status(ibs, jobid=None):
         status = ibs.job_manager.jobiface.get_job_status(jobid)
     return status
 
+@register_ibs_method
+@register_api(
+    '/api/engine/job/statuses/', methods=['GET'], __api_plural_check__=False
+)
+def get_job_statuses(ibs, jobids=None):
+    jobids = jobids[1:-1]
+    jobids = jobids.split(',')
+    statuses = dict()
+    for jobid in jobids:
+        status = ibs.job_manager.jobiface.get_job_status(jobid)
+        statuses[jobid] = status['jobstatus']
+
+    return statuses
+
 
 # @register_ibs_method
 # @register_api('/api/engine/job/terminate/', methods=['GET', 'POST'])
