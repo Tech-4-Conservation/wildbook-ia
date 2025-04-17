@@ -107,6 +107,7 @@ AUTOLOAD_PLUGIN_MODNAMES = [
     'wbia.algo.smk.vocab_indexer',
     'wbia.algo.smk.smk_pipeline',
     (('--no-cnn', '--nocnn'), 'wbia_cnn._plugin'),
+    (('--no-miew-id', '--nomiew-id'), 'wbia_miew_id._plugin'),
 ]
 
 
