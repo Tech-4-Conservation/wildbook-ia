@@ -337,7 +337,8 @@ def get_job_status(ibs, jobid=None):
     '/api/engine/job/statuses/', methods=['GET'], __api_plural_check__=False
 )
 def get_job_statuses(ibs, jobids=None):
-    jobids = jobids[1:-1]
+    if jobids.startswith('[') and jobids.endswith(']'):
+        jobids = jobids[1:-1]
     jobids = jobids.split(',')
     statuses = dict()
     for jobid in jobids:
