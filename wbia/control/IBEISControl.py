@@ -36,6 +36,7 @@ Note:
 import atexit
 import logging
 import weakref
+import os
 from os.path import join, split
 from pathlib import Path
 
@@ -52,6 +53,7 @@ from wbia.init import sysres
 (print, rrr, profile) = ut.inject2(__name__)
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 # Import modules which define injectable functions
 
@@ -1220,9 +1222,9 @@ class IBEISController(BASE_CLASS):
             species = self.get_primary_database_species()
             # Use a url to get the icon
             url = {
-                self.const.TEST_SPECIES.GIR_MASAI: 'https://cthulhu.dyn.wildme.io/public/testimgs/tGDVaKC.png',
-                self.const.TEST_SPECIES.ZEB_PLAIN: 'https://cthulhu.dyn.wildme.io/public/testimgs/2Ge1PRg.png',
-                self.const.TEST_SPECIES.ZEB_GREVY: 'https://cthulhu.dyn.wildme.io/public/testimgs/PaUT45f.png',
+                self.const.TEST_SPECIES.GIR_MASAI: f'{WILDBOOK_IA_MODELS_BASE}/public/testimgs/tGDVaKC.png',
+                self.const.TEST_SPECIES.ZEB_PLAIN: f'{WILDBOOK_IA_MODELS_BASE}/public/testimgs/2Ge1PRg.png',
+                self.const.TEST_SPECIES.ZEB_GREVY: f'{WILDBOOK_IA_MODELS_BASE}/public/testimgs/PaUT45f.png',
             }.get(species, None)
             if url is not None:
                 icon = vt.imread(ut.grab_file_url(url), orient='auto')

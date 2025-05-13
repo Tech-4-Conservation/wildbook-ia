@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+import os
+
 import cv2
 import numpy as np
 import utool
@@ -7,6 +10,8 @@ import utool
 from wbia.plottool import draw_func2 as df2
 from wbia.plottool import viz_image2
 from wbia.plottool.tests.test_helpers import dummy_bbox
+
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 
 def _test_viz_image(img_fpath):
@@ -36,7 +41,7 @@ def _test_viz_image(img_fpath):
 
 
 if __name__ == '__main__':
-    TEST_IMAGES_URL = 'https://wildbookiarepository.azureedge.net/data/testdata.zip'
+    TEST_IMAGES_URL = f'{WILDBOOK_IA_MODELS_BASE}/data/testdata.zip'
     test_image_dir = utool.grab_zipped_url(TEST_IMAGES_URL, appname='utool')
     imgpaths = utool.list_images(
         test_image_dir, fullpath=True, recursive=False

@@ -5,6 +5,7 @@ Interface to SSD object proposals.
 import logging
 import sys
 from os.path import abspath, dirname, exists, expanduser, join  # NOQA
+import os
 
 import numpy as np
 import utool as ut
@@ -12,6 +13,8 @@ import vtool as vt
 
 (print, rrr, profile) = ut.inject2(__name__, '[ssd]')
 logger = logging.getLogger('wbia')
+
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 # SCRIPT_PATH = abspath(dirname(__file__))
 SCRIPT_PATH = abspath(expanduser(join('~', 'code', 'ssd')))
@@ -47,16 +50,16 @@ VERBOSE_SS = ut.get_argflag('--verbssd') or ut.VERBOSE
 
 
 CONFIG_URL_DICT = {
-    'pretrained-300-pascal': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.300.pascal.prototxt',
-    'pretrained-512-pascal': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.512.pascal.prototxt',
-    'pretrained-300-pascal-plus': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.300.pascal.plus.prototxt',
-    'pretrained-512-pascal-plus': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.512.pascal.plus.prototxt',
-    'pretrained-300-coco': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.300.coco.prototxt',
-    'pretrained-512-coco': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.512.coco.prototxt',
-    'pretrained-300-ilsvrc': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.300.ilsvrc.prototxt',
-    'pretrained-500-ilsvrc': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.500.ilsvrc.prototxt',
-    'default': 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.512.pascal.plus.prototxt',
-    None: 'https://wildbookiarepository.azureedge.net/models/pretrained.ssd.512.pascal.plus.prototxt',
+    'pretrained-300-pascal': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.300.pascal.prototxt',
+    'pretrained-512-pascal': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.512.pascal.prototxt',
+    'pretrained-300-pascal-plus': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.300.pascal.plus.prototxt',
+    'pretrained-512-pascal-plus': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.512.pascal.plus.prototxt',
+    'pretrained-300-coco': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.300.coco.prototxt',
+    'pretrained-512-coco': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.512.coco.prototxt',
+    'pretrained-300-ilsvrc': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.300.ilsvrc.prototxt',
+    'pretrained-500-ilsvrc': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.500.ilsvrc.prototxt',
+    'default': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.512.pascal.plus.prototxt',
+    None: f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.ssd.512.pascal.plus.prototxt',
 }
 
 

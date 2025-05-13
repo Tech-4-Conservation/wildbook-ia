@@ -20,21 +20,22 @@ from wbia import constants as const
 (print, rrr, profile) = ut.inject2(__name__, '[efficientnet]')
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 PARALLEL = not const.CONTAINERIZED
 INPUT_SIZE = 512
 
 ARCHIVE_URL_DICT = {
-    'seaturtles_effnet_v0': 'https://wildbookiarepository.azureedge.net/models/labeler_seaturtles_effnet.v0.zip',
-    'snail_effnet_v0': 'https://wildbookiarepository.azureedge.net/models/labeler_snail_effnet.v0.zip',
-    'deer_effnet_v0': 'https://wildbookiarepository.azureedge.net/models/labeler_deer_effnet.v0.zip',
-    'leopard_shark_effnet_v0': 'https://wildbookiarepository.azureedge.net/models/labeler_leopard_shark_effnet.v0.zip',
-    'trout_effnet_v0': 'https://wildbookiarepository.azureedge.net/models/labeler_trout_effnet.v0.zip',
-    'shark_effnet_v0': 'https://wildbookiarepository.azureedge.net/models/labeler_shark_effnet.v0.zip',
-    'msv2_multilabel_effnet_v0': 'https://cthulhu.dyn.wildme.io/public/models/labeler_msv2_multilabel_effnet.v2.zip',
-    'msv2_multilabel_flip_effnet_v0': 'https://cthulhu.dyn.wildme.io/public/models/labeler_msv2_multilabel_flip_effnet.v2.zip',
-    'grouper_effnet_v0': 'https://wildbookiarepository.azureedge.net/models/labeler_grouper_effnet.v0.zip',
-    'whaleshark_effnet_v0': 'https://wildbookiarepository.azureedge.net/models/labeler_whaleshark_effnet.v0.zip'
+    'seaturtles_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/models/labeler_seaturtles_effnet.v0.zip',
+    'snail_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/models/labeler_snail_effnet.v0.zip',
+    'deer_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/models/labeler_deer_effnet.v0.zip',
+    'leopard_shark_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/models/labeler_leopard_shark_effnet.v0.zip',
+    'trout_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/models/labeler_trout_effnet.v0.zip',
+    'shark_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/models/labeler_shark_effnet.v0.zip',
+    'msv2_multilabel_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/public/models/labeler_msv2_multilabel_effnet.v2.zip',
+    'msv2_multilabel_flip_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/public/models/labeler_msv2_multilabel_flip_effnet.v2.zip',
+    'grouper_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/models/labeler_grouper_effnet.v0.zip',
+    'whaleshark_effnet_v0': f'{WILDBOOK_IA_MODELS_BASE}/models/labeler_whaleshark_effnet.v0.zip'
 }
 
 

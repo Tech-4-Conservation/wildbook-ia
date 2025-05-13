@@ -3,6 +3,7 @@
 import matplotlib as mpl  # NOQA
 import matplotlib.pyplot as plt  # NOQA
 from matplotlib.widgets import Button  # NOQA
+import os
 
 from wbia.plottool import abstract_interaction, interact_annotations
 from wbia.plottool import interact_helpers as ih
@@ -24,6 +25,8 @@ ut.noinject(__name__, '[pt.interact_multiimage]')
 BASE_CLASS = abstract_interaction.AbstractInteraction
 # BASE_CLASS = object
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
+
 
 @ut.reloadable_class
 class MultiImageInteraction(BASE_CLASS):
@@ -36,7 +39,7 @@ class MultiImageInteraction(BASE_CLASS):
         >>> # ENABLE_DOCTEST
         >>> from wbia.plottool.interact_multi_image import *  # NOQA
         >>> import utool as ut
-        >>> TEST_IMAGES_URL = 'https://wildbookiarepository.azureedge.net/data/testdata.zip'
+        >>> TEST_IMAGES_URL = f'{WILDBOOK_IA_MODELS_BASE}/data/testdata.zip'
         >>> test_image_dir = ut.grab_zipped_url(TEST_IMAGES_URL, appname='utool')
         >>> # test image paths
         >>> imgpaths       = ut.list_images(test_image_dir, fullpath=True, recursive=False)

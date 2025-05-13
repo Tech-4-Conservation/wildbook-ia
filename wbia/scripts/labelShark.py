@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
+import os
 
 import numpy as np
 import utool as ut
@@ -10,8 +11,10 @@ from wbia.scripts import classify_shark
 (print, rrr, profile) = ut.inject2(__name__, '[sharkspotter]')
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
+
 modelStateLocation = (
-    'https://wildbookiarepository.azureedge.net/models/classifier.lenet.whale_shark.pkl'
+    f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.lenet.whale_shark.pkl'
 )
 
 
