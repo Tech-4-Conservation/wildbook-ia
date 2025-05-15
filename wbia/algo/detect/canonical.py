@@ -16,17 +16,18 @@ import utool as ut
 (print, rrr, profile) = ut.inject2(__name__, '[canonical]')
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 INPUT_SIZE = 224
 
 
 ARCHIVE_URL_DICT = {
-    'canonical_zebra_grevys_v1': 'https://wildbookiarepository.azureedge.net/models/localizer.canonical.zebra_grevys.v1.zip',
-    'canonical_zebra_grevys_v2': 'https://wildbookiarepository.azureedge.net/models/localizer.canonical.zebra_grevys.v2.zip',
-    'canonical_zebra_grevys_v3': 'https://wildbookiarepository.azureedge.net/models/localizer.canonical.zebra_grevys.v3.zip',
-    'canonical_zebra_grevys_v4': 'https://wildbookiarepository.azureedge.net/models/localizer.canonical.zebra_grevys.v4.zip',
-    'canonical_zebra_grevys_v5': 'https://wildbookiarepository.azureedge.net/models/localizer.canonical.zebra_grevys.v5.zip',
-    'canonical_zebra_grevys_v6': 'https://wildbookiarepository.azureedge.net/models/localizer.canonical.zebra_grevys.v6.zip',
+    'canonical_zebra_grevys_v1': f'{WILDBOOK_IA_MODELS_BASE}/models/localizer.canonical.zebra_grevys.v1.zip',
+    'canonical_zebra_grevys_v2': f'{WILDBOOK_IA_MODELS_BASE}/models/localizer.canonical.zebra_grevys.v2.zip',
+    'canonical_zebra_grevys_v3': f'{WILDBOOK_IA_MODELS_BASE}/models/localizer.canonical.zebra_grevys.v3.zip',
+    'canonical_zebra_grevys_v4': f'{WILDBOOK_IA_MODELS_BASE}/models/localizer.canonical.zebra_grevys.v4.zip',
+    'canonical_zebra_grevys_v5': f'{WILDBOOK_IA_MODELS_BASE}/models/localizer.canonical.zebra_grevys.v5.zip',
+    'canonical_zebra_grevys_v6': f'{WILDBOOK_IA_MODELS_BASE}/models/localizer.canonical.zebra_grevys.v6.zip',
 }
 
 

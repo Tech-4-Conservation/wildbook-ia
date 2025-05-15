@@ -3,6 +3,7 @@ import logging
 import random
 from functools import partial  # NOQA
 from os.path import abspath, exists, expanduser, join
+import os
 
 import cv2
 import numpy as np
@@ -30,6 +31,7 @@ CLASS_INJECT_KEY, register_ibs_method = controller_inject.make_ibs_register_deco
     __name__
 )
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 register_api = controller_inject.get_wbia_flask_api(__name__)
 
@@ -1176,14 +1178,14 @@ def scout_wic_train(
         >>> import wbia
         >>> ibs = wbia.opendb('testdb1')
         >>> restart_config_dict = {
-        >>>     'scout-d3e8bf43-boost0': 'https://wildbookiarepository.azureedge.net/models/classifier2.scout.d3e8bf43.0.zip',
-        >>>     'scout-d3e8bf43-boost1': 'https://wildbookiarepository.azureedge.net/models/classifier2.scout.d3e8bf43.1.zip',
-        >>>     'scout-d3e8bf43-boost2': 'https://wildbookiarepository.azureedge.net/models/classifier2.scout.d3e8bf43.2.zip',
-        >>>     'scout-d3e8bf43-boost3': 'https://wildbookiarepository.azureedge.net/models/classifier2.scout.d3e8bf43.3.zip',
-        >>>     'scout-d3e8bf43-boost4': 'https://wildbookiarepository.azureedge.net/models/classifier2.scout.d3e8bf43.4.zip',
-        >>>     'scout-d3e8bf43-boost5': 'https://wildbookiarepository.azureedge.net/models/classifier2.scout.d3e8bf43.5.zip',
-        >>>     'scout-d3e8bf43-boost6': 'https://wildbookiarepository.azureedge.net/models/classifier2.scout.d3e8bf43.6.zip',
-        >>>     'scout-d3e8bf43-boost7': 'https://wildbookiarepository.azureedge.net/models/classifier2.scout.d3e8bf43.7.zip',
+        >>>     'scout-d3e8bf43-boost0': f'{WILDBOOK_IA_MODELS_BASE}/models/classifier2.scout.d3e8bf43.0.zip',
+        >>>     'scout-d3e8bf43-boost1': f'{WILDBOOK_IA_MODELS_BASE}/models/classifier2.scout.d3e8bf43.1.zip',
+        >>>     'scout-d3e8bf43-boost2': f'{WILDBOOK_IA_MODELS_BASE}/models/classifier2.scout.d3e8bf43.2.zip',
+        >>>     'scout-d3e8bf43-boost3': f'{WILDBOOK_IA_MODELS_BASE}/models/classifier2.scout.d3e8bf43.3.zip',
+        >>>     'scout-d3e8bf43-boost4': f'{WILDBOOK_IA_MODELS_BASE}/models/classifier2.scout.d3e8bf43.4.zip',
+        >>>     'scout-d3e8bf43-boost5': f'{WILDBOOK_IA_MODELS_BASE}/models/classifier2.scout.d3e8bf43.5.zip',
+        >>>     'scout-d3e8bf43-boost6': f'{WILDBOOK_IA_MODELS_BASE}/models/classifier2.scout.d3e8bf43.6.zip',
+        >>>     'scout-d3e8bf43-boost7': f'{WILDBOOK_IA_MODELS_BASE}/models/classifier2.scout.d3e8bf43.7.zip',
         >>> }
         >>> ibs.scout_wic_train(restart_config_dict=restart_config_dict)
     """

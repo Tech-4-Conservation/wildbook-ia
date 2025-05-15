@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 # flake8: noqa
+
+import os
 import logging
 
 import numpy as np
@@ -23,6 +25,7 @@ from os.path import join
 (print, rrr, profile) = ut.inject2(__name__)
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 def shark_net(dry=False):
     """

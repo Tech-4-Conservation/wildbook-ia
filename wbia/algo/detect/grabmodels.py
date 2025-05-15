@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 import logging
 from os.path import exists, join, realpath
+import os
 
 import utool as ut
 
 (print, rrr, profile) = ut.inject2(__name__, '[grabmodels]')
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 # DETECTMODELS_DIR = realpath(join(dirname(__file__), 'rf'))
 DEFAULT_DETECTMODELS_DIR = ut.get_app_resource_dir('wbia', 'detectmodels')
@@ -18,7 +20,7 @@ MODEL_ALGO_SUBDIRS = {
 }
 
 MODEL_URLS = {
-    DETECTOR_KEY_RF: 'https://wildbookiarepository.azureedge.net/models/rf.v3.zip',
+    DETECTOR_KEY_RF: f'{WILDBOOK_IA_MODELS_BASE}/models/rf.v3.zip',
 }
 
 

@@ -5,30 +5,33 @@ Interface to Darknet object proposals.
 import logging
 from os import listdir
 from os.path import isdir, isfile, join
+import os
 
 import utool as ut
 
 (print, rrr, profile) = ut.inject2(__name__, '[rf]')
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
+
 
 VERBOSE_SVM = ut.get_argflag('--verbrf') or ut.VERBOSE
 
 
 CONFIG_URL_DICT = {
-    # 'localizer-zebra-10'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.10.zip',
-    # 'localizer-zebra-20'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.20.zip',
-    # 'localizer-zebra-30'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.30.zip',
-    # 'localizer-zebra-40'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.40.zip',
-    # 'localizer-zebra-50'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.50.zip',
-    # 'localizer-zebra-60'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.60.zip',
-    # 'localizer-zebra-70'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.70.zip',
-    # 'localizer-zebra-80'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.80.zip',
-    # 'localizer-zebra-90'  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.90.zip',
-    # 'localizer-zebra-100' : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.localization.zebra.100.zip',
-    # 'image-zebra'         : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.image.zebra.pkl',
-    # 'default'             : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.image.zebra.pkl',
-    # None                  : 'https://wildbookiarepository.azureedge.net/models/classifier.rf.image.zebra.pkl',
+    # 'localizer-zebra-10'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.10.zip',
+    # 'localizer-zebra-20'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.20.zip',
+    # 'localizer-zebra-30'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.30.zip',
+    # 'localizer-zebra-40'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.40.zip',
+    # 'localizer-zebra-50'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.50.zip',
+    # 'localizer-zebra-60'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.60.zip',
+    # 'localizer-zebra-70'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.70.zip',
+    # 'localizer-zebra-80'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.80.zip',
+    # 'localizer-zebra-90'  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.90.zip',
+    # 'localizer-zebra-100' : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.localization.zebra.100.zip',
+    # 'image-zebra'         : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.image.zebra.pkl',
+    # 'default'             : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.image.zebra.pkl',
+    # None                  : f'{WILDBOOK_IA_MODELS_BASE}/models/classifier.rf.image.zebra.pkl',
 }
 
 

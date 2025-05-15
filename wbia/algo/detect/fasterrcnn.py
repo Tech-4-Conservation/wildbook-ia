@@ -5,6 +5,7 @@ Interface to Faster R-CNN object proposals.
 import logging
 import sys
 from os.path import abspath, dirname, exists, expanduser, join  # NOQA
+import os
 
 import cv2
 import numpy as np
@@ -13,6 +14,8 @@ import vtool as vt
 
 (print, rrr, profile) = ut.inject2(__name__, '[faster r-cnn]')
 logger = logging.getLogger('wbia')
+
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 # SCRIPT_PATH = abspath(dirname(__file__))
 SCRIPT_PATH = abspath(expanduser(join('~', 'code', 'py-faster-rcnn')))
@@ -56,13 +59,13 @@ VERBOSE_SS = ut.get_argflag('--verbdss') or ut.VERBOSE
 
 
 CONFIG_URL_DICT = {
-    # 'pretrained-fast-vgg-pascal' : 'https://wildbookiarepository.azureedge.net/models/pretrained.fastrcnn.vgg16.pascal.prototxt',  # Trained on PASCAL VOC 2007
-    'pretrained-vgg-pascal': 'https://wildbookiarepository.azureedge.net/models/pretrained.fasterrcnn.vgg16.pascal.prototxt',  # Trained on PASCAL VOC 2007
-    'pretrained-zf-pascal': 'https://wildbookiarepository.azureedge.net/models/pretrained.fasterrcnn.zf.pascal.prototxt',  # Trained on PASCAL VOC 2007
-    'pretrained-vgg-ilsvrc': 'https://wildbookiarepository.azureedge.net/models/pretrained.fasterrcnn.vgg16.ilsvrc.prototxt',  # Trained on ILSVRC 2014
-    'pretrained-zf-ilsvrc': 'https://wildbookiarepository.azureedge.net/models/pretrained.fasterrcnn.zf.ilsvrc.prototxt',  # Trained on ILSVRC 2014
-    'default': 'https://wildbookiarepository.azureedge.net/models/pretrained.fasterrcnn.vgg16.pascal.prototxt',  # Trained on PASCAL VOC 2007
-    None: 'https://wildbookiarepository.azureedge.net/models/pretrained.fasterrcnn.vgg16.pascal.prototxt',  # Trained on PASCAL VOC 2007
+    # 'pretrained-fast-vgg-pascal' : f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.fastrcnn.vgg16.pascal.prototxt',  # Trained on PASCAL VOC 2007
+    'pretrained-vgg-pascal': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.fasterrcnn.vgg16.pascal.prototxt',  # Trained on PASCAL VOC 2007
+    'pretrained-zf-pascal': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.fasterrcnn.zf.pascal.prototxt',  # Trained on PASCAL VOC 2007
+    'pretrained-vgg-ilsvrc': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.fasterrcnn.vgg16.ilsvrc.prototxt',  # Trained on ILSVRC 2014
+    'pretrained-zf-ilsvrc': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.fasterrcnn.zf.ilsvrc.prototxt',  # Trained on ILSVRC 2014
+    'default': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.fasterrcnn.vgg16.pascal.prototxt',  # Trained on PASCAL VOC 2007
+    None: f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.fasterrcnn.vgg16.pascal.prototxt',  # Trained on PASCAL VOC 2007
 }
 
 

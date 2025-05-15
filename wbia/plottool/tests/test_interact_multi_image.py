@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
+
 import utool
 
 # DUPLICATE CODE, DELETE
@@ -8,6 +10,8 @@ from wbia.plottool import draw_func2 as df2
 from wbia.plottool import interact_multi_image
 
 # import wbia
+
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 
 def _test_interact_multimage(imgpaths):
@@ -29,7 +33,7 @@ def _test_interact_multimage(imgpaths):
 
 
 if __name__ == '__main__':
-    TEST_IMAGES_URL = 'https://wildbookiarepository.azureedge.net/data/testdata.zip'
+    TEST_IMAGES_URL = f'{WILDBOOK_IA_MODELS_BASE}/data/testdata.zip'
     test_image_dir = utool.grab_zipped_url(TEST_IMAGES_URL, appname='utool')
     imgpaths = utool.list_images(
         test_image_dir, fullpath=True, recursive=False

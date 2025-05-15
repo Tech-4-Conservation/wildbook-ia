@@ -19,6 +19,8 @@ logger = logging.getLogger('wbia')
 # SCRIPT_PATH = abspath(dirname(__file__))
 SCRIPT_PATH = abspath(expanduser(join('~', 'code', 'darknet')))
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
+
 if not ut.get_argflag('--no-darknet'):
     try:
         assert exists(SCRIPT_PATH)
@@ -32,14 +34,14 @@ VERBOSE_SS = ut.get_argflag('--verbdss') or ut.VERBOSE
 
 
 CONFIG_URL_DICT = {
-    # 'pretrained-v1-pascal'       : 'https://wildbookiarepository.azureedge.net/models/pretrained.darknet.v1.pascal.cfg',
-    'pretrained-v2-pascal': 'https://wildbookiarepository.azureedge.net/models/pretrained.darknet.v2.pascal.cfg',
-    'pretrained-v2-large-pascal': 'https://wildbookiarepository.azureedge.net/models/pretrained.darknet.v2.large.pascal.cfg',
-    'pretrained-tiny-pascal': 'https://wildbookiarepository.azureedge.net/models/pretrained.darknet.tiny.pascal.cfg',
-    'pretrained-v2-large-coco': 'https://wildbookiarepository.azureedge.net/models/pretrained.darknet.v2.large.coco.cfg',
-    'pretrained-tiny-coco': 'https://wildbookiarepository.azureedge.net/models/pretrained.darknet.tiny.coco.cfg',
-    'default': 'https://wildbookiarepository.azureedge.net/models/pretrained.darknet.v2.large.coco.cfg',
-    None: 'https://wildbookiarepository.azureedge.net/models/pretrained.darknet.v2.large.coco.cfg',
+    # 'pretrained-v1-pascal'       : f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.darknet.v1.pascal.cfg',
+    'pretrained-v2-pascal': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.darknet.v2.pascal.cfg',
+    'pretrained-v2-large-pascal': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.darknet.v2.large.pascal.cfg',
+    'pretrained-tiny-pascal': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.darknet.tiny.pascal.cfg',
+    'pretrained-v2-large-coco': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.darknet.v2.large.coco.cfg',
+    'pretrained-tiny-coco': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.darknet.tiny.coco.cfg',
+    'default': f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.darknet.v2.large.coco.cfg',
+    None: f'{WILDBOOK_IA_MODELS_BASE}/models/pretrained.darknet.v2.large.coco.cfg',
 }
 
 
