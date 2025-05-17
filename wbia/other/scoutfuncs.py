@@ -1532,7 +1532,7 @@ def scout_wic_deploy(ibs, weights_path_list, hashstr, round_num=0, temporary=Tru
     )
     densenet.ARCHIVE_URL_DICT[
         model_key
-    ] = 'https://wildbookiarepository.azureedge.net/models/{}.zip'.format(output_name)
+    ] = f'{WILDBOOK_IA_MODELS_BASE}/models/{output_name}.zip'
     logger.info(ut.repr3(densenet.ARCHIVE_URL_DICT))
 
     return model_key, output_name
