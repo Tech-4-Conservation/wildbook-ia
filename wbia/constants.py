@@ -6,6 +6,7 @@ string name changes)
 """
 import logging
 import math
+import os
 from collections import OrderedDict
 from os.path import join
 
@@ -34,6 +35,8 @@ CODEX = ut.get_argval('--codex', type_=str, default='codex_houston_1')
 SENTRY_SKIP_TRANSACTION_PATHS = {
     '/api/test/heartbeat/',
 }
+
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 try:
     import sentry_sdk
@@ -386,23 +389,23 @@ WILDBOOK_TARGET = ut.get_argval(
 
 
 class ZIPPED_URLS(object):  # NOQA
-    PZ_DISTINCTIVE = 'https://wildbookiarepository.azureedge.net/models/distinctivness_zebra_plains.zip'  # DEPRICATE
-    GZ_DISTINCTIVE = 'https://wildbookiarepository.azureedge.net/models/distinctivness_zebra_grevys.zip'  # DEPRICATE
+    PZ_DISTINCTIVE = f'{WILDBOOK_IA_MODELS_BASE}/models/distinctivness_zebra_plains.zip'  # DEPRICATE
+    GZ_DISTINCTIVE = f'{WILDBOOK_IA_MODELS_BASE}/models/distinctivness_zebra_grevys.zip'  # DEPRICATE
 
-    PZ_MTEST = 'https://wildbookiarepository.azureedge.net/databases/PZ_MTEST.zip'
-    NAUTS = 'https://wildbookiarepository.azureedge.net/databases/NAUT_test.zip'
-    WDS = 'https://wildbookiarepository.azureedge.net/databases/wd_peter2.zip'
+    PZ_MTEST = f'{WILDBOOK_IA_MODELS_BASE}/databases/PZ_MTEST.zip'
+    NAUTS = f'{WILDBOOK_IA_MODELS_BASE}/databases/NAUT_test.zip'
+    WDS = f'{WILDBOOK_IA_MODELS_BASE}/databases/wd_peter2.zip'
     DF_CURVRANK = (
-        'https://wildbookiarepository.azureedge.net/databases/testdb_curvrank.zip'
+        f'{WILDBOOK_IA_MODELS_BASE}/databases/testdb_curvrank.zip'
     )
     ID_EXAMPLE = (
-        'https://wildbookiarepository.azureedge.net/databases/testdb_identification.zip'
+        f'{WILDBOOK_IA_MODELS_BASE}/databases/testdb_identification.zip'
     )
     ORIENTATION = (
-        'https://wildbookiarepository.azureedge.net/databases/testdb_orientation.zip'
+        f'{WILDBOOK_IA_MODELS_BASE}/databases/testdb_orientation.zip'
     )
-    ASSIGNER = 'https://wildbookiarepository.azureedge.net/databases/testdb_assigner.zip'
-    K7_EXAMPLE = 'https://wildbookiarepository.azureedge.net/databases/testdb_kaggle7.zip'
+    ASSIGNER = f'{WILDBOOK_IA_MODELS_BASE}/databases/testdb_assigner.zip'
+    K7_EXAMPLE = f'{WILDBOOK_IA_MODELS_BASE}/databases/testdb_kaggle7.zip'
 
 
 # Turn off features at Lewa :(

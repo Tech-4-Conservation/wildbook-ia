@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 from os.path import basename, exists, join
+import os
 
 import utool as ut
 
@@ -9,6 +10,7 @@ from wbia.algo.verif import sklearn_utils, verifier
 print, rrr, profile = ut.inject2(__name__)
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 @ut.reloadable_class
 class Deployer(object):

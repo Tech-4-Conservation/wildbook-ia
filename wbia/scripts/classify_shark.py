@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 # flake8: noqa
+
+import os
 import logging
 
 import numpy as np
@@ -23,6 +25,7 @@ from os.path import join
 (print, rrr, profile) = ut.inject2(__name__)
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 def shark_net(dry=False):
     """
@@ -994,7 +997,7 @@ def predict_ws_injury_interim_svm(ibs, aids, **kwargs):
 
     # Load the SVM
     model_fname = 'interim_svc_injur-shark-hog_12559_224x224x3_ldhhxnxo.cPkl'
-    model_url = 'https://wildbookiarepository.azureedge.net/models/{}'.format(model_fname)
+    model_url = f'{WILDBOOK_IA_MODELS_BASE}/models/{model_fname}'
     model_fpath = ut.grab_file_url(model_url, check_hash=False)
     clf = ut.load_cPkl(model_fpath)
 

@@ -15,6 +15,8 @@ import wbia.plottool as pt
 from wbia import constants as const
 from wbia.control.controller_inject import make_ibs_register_decorator
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
+
 logger = logging.getLogger('wbia')
 
 CLASS_INJECT_KEY, register_ibs_method = make_ibs_register_decorator(__name__)
@@ -27,77 +29,77 @@ INMEM_ASSIGNER_MODELS = {}
 SPECIES_CONFIG_MAP = {
     'wild_dog': {
         'model_file': '/tmp/balanced_wd.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.wd_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.wd_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_features',
     },
     'wild_dog_dark': {
         'model_file': '/tmp/balanced_wd.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.wd_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.wd_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_features',
     },
     'wild_dog_light': {
         'model_file': '/tmp/balanced_wd.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.wd_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.wd_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_features',
     },
     'wild_dog_puppy': {
         'model_file': '/tmp/balanced_wd.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.wd_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.wd_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_features',
     },
     'wild_dog_standard': {
         'model_file': '/tmp/balanced_wd.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.wd_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.wd_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_features',
     },
     'wild_dog_tan': {
         'model_file': '/tmp/balanced_wd.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.wd_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.wd_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_features',
     },
     'chelonia_mydas': {
         'model_file': '/tmp/assigner.iot_dummies_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.iot_dummies_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.iot_dummies_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
     'eretmochelys_imbricata': {
         'model_file': '/tmp/assigner.iot_dummies_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.iot_dummies_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.iot_dummies_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
     'lepidochelys_olivacea': {
         'model_file': '/tmp/assigner.iot_dummies_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.iot_dummies_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.iot_dummies_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
     'turtle_green': {
         'model_file': '/tmp/assigner.iot_dummies_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.iot_dummies_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.iot_dummies_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
     'turtle_hawksbill': {
         'model_file': '/tmp/assigner.iot_dummies_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.iot_dummies_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.iot_dummies_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
     'turtle_oliveridley': {
         'model_file': '/tmp/assigner.iot_dummies_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.iot_dummies_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.iot_dummies_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
     'lion': {
         'model_file': '/tmp/assigner.lions_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.lions_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.lions_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
     'lioness': {
         'model_file': '/tmp/assigner.lions_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.lions_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.lions_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
     'lion_general': {
         'model_file': '/tmp/assigner.lions_v0.joblib',
-        'model_url': 'https://wildbookiarepository.azureedge.net/models/assigner.lions_v0.joblib',
+        'model_url': f'{WILDBOOK_IA_MODELS_BASE}/models/assigner.lions_v0.joblib',
         'annot_feature_col': 'assigner_viewpoint_unit_features',
     },
 }

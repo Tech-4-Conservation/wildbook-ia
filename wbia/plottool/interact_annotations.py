@@ -30,6 +30,7 @@ CommandLine:
 """
 import logging
 import re
+import os
 
 import numpy as np
 
@@ -49,6 +50,7 @@ from . import draw_func2 as df2
 print, rrr, profile = ut.inject2(__name__)
 logger = logging.getLogger('wbia')
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 DEFAULT_SPECIES_TAG = '____'
 # FIXE THESE TO BE GENERIC
@@ -1430,7 +1432,7 @@ def test_interact_annots():
     ]
     # if img is None:
     try:
-        img_url = 'https://cthulhu.dyn.wildme.io/public/testimgs/Vq9CLok.jpg'
+        img_url = f'{WILDBOOK_IA_MODELS_BASE}/public/testimgs/Vq9CLok.jpg'
         img_fpath = ut.grab_file_url(img_url)
         img = vt.imread(img_fpath)
     except Exception as ex:

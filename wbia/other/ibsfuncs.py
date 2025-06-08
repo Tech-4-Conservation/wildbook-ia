@@ -46,6 +46,7 @@ PST = pytz.timezone('US/Pacific')
 EXIF_UNDEFINED = ORIENTATION_DICT_INVERSE[ORIENTATION_UNDEFINED]
 EXIF_NORMAL = ORIENTATION_DICT_INVERSE[ORIENTATION_000]
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
 
 # Inject utool function
 (print, rrr, profile) = ut.inject2(__name__, '[ibsfuncs]')
@@ -7012,7 +7013,7 @@ def compute_ggr_path_dict(ibs):
         'Marsabit',
         'Meru',
     ]
-    county_file_url = 'https://wildbookiarepository.azureedge.net/data/kenyan_counties_boundary_gps_coordinates.zip'
+    county_file_url = f'{WILDBOOK_IA_MODELS_BASE}/data/kenyan_counties_boundary_gps_coordinates.zip'
     unzipped_path = ut.grab_zipped_url(county_file_url)
     county_path = join(unzipped_path, 'County')
     counties = shapefile.Reader(county_path)
@@ -7026,7 +7027,7 @@ def compute_ggr_path_dict(ibs):
         path_dict[name] = Path(np.array(point_list))
 
     # ADD LAND TENURES
-    land_tenure_file_url = 'https://wildbookiarepository.azureedge.net/data/kenyan_land_tenures_boundary_gps_coordinates.zip'
+    land_tenure_file_url = f'{WILDBOOK_IA_MODELS_BASE}/data/kenyan_land_tenures_boundary_gps_coordinates.zip'
     unzipped_path = ut.grab_zipped_url(land_tenure_file_url)
     land_tenure_path = join(unzipped_path, 'LandTenure')
     land_tenures = shapefile.Reader(land_tenure_path)

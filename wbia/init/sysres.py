@@ -26,6 +26,8 @@ __APPNAME__ = 'wbia'
 
 ALLOW_GUI = ut.WIN32 or os.environ.get('DISPLAY', None) is not None
 
+WILDBOOK_IA_MODELS_BASE = os.getenv('WILDBOOK_IA_MODELS_BASE', 'https://wildbookiarepository.azureedge.net')
+
 
 def get_wbia_resource_dir():
     return ub.ensure_app_cache_dir('wbia')
@@ -423,7 +425,7 @@ get_available_databases = get_ibsdb_list
 
 
 def ensure_wd_peter2():
-    zipped_db_url = 'https://wildbookiarepository.azureedge.net/databases/wd_peter2.zip'
+    zipped_db_url = f'{WILDBOOK_IA_MODELS_BASE}/databases/wd_peter2.zip'
     return ensure_db_from_url(zipped_db_url)
 
 
@@ -874,7 +876,7 @@ def ensure_nauts():
 
 
 def ensure_testdb2():
-    zipped_db_url = 'https://wildbookiarepository.azureedge.net/databases/testdb2.tar.gz'
+    zipped_db_url = f'{WILDBOOK_IA_MODELS_BASE}/databases/testdb2.tar.gz'
     return ensure_db_from_url(zipped_db_url)
 
 
