@@ -278,7 +278,7 @@ def detect(
     sensitivity=0.0,
     verbose=VERBOSE_LN,
     flip=False,
-    batch_size=192,
+    batch_size=100,
     **kwargs,
 ):
     """Detect image filepaths with lightnet.
