@@ -971,6 +971,21 @@ def commit_localization_results(
 
     for gid, results in zipped_list:
         score, bbox_list, theta_list, conf_list, class_list = results
+
+        # Keep only entries where all 4 bbox values are non-zero
+        filtered_data = [
+            (bbox, theta, conf, cls)
+            for bbox, theta, conf, cls in zip(bbox_list, theta_list, conf_list, class_list)
+            if all(bbox)  # True only if none of the tuple values are 0
+        ]
+
+        if not filtered_data:
+            continue  # Skip this gid if no valid boxes
+
+        # Unpack filtered data back to lists
+        bbox_list, theta_list, conf_list, class_list = zip(*filtered_data)
+
+
         num = len(bbox_list)
         gid_list_ = [gid] * num
         notes_list = [note] * num
